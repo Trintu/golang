@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/Trintu/golang
     targetRevision: HEAD
-    path: golang/apps/golang  # Chart root directory
+    path: apps/golang  # Chart root directory
     helm:
       valueFiles:
         - values.yaml
