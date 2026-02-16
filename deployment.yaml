@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: golang
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: golang
+  template:
+    metadata:
+      labels:
+        app: golang
+    spec:
+      containers:
+      - name: golang
+        image: dhi.io/golang:1.26-debian13-sfw-ent-dev
+        ports:
+        - containerPort: 8080
