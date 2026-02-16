@@ -1,21 +1,20 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: golang-app
-  namespace: argocd
+  name: golang-deployment
+  namespace: default
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/Trintu/golang
-    targetRevision: HEAD
-    path: apps/golang  # Chart root directory
-    helm:
-      valueFiles:
-        - values.yaml
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+  replicas: 2
+  selector:
+    matchLabels:
+      app: golang
+  template:
+    metadata:
+      labels:
+        app: golang
+    spec:
+      containers:
+      - name: golang
+        image: golang:latest
+        ports:
+        - containerPort: 8080
