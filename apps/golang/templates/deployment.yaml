@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: golang
-        image: golang:latest
+        image: devrymike/golang-app:latest
         ports:
         - containerPort: 8080
