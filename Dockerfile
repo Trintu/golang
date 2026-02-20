@@ -1,6 +1,6 @@
 FROM golang:alpine
 
-WORKDIR D:\Projects\golang
+WORKDIR /app
 
 COPY go.mod go.sum ./
 
@@ -8,6 +8,6 @@ RUN go mod download
 
 COPY . .
 
-RUN go build -o golang
+RUN go build -o golangs
 
-CMD "[./golang]"
+CMD ["./golang"]
